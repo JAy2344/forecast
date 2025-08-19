@@ -12,24 +12,25 @@
 <body>
     <div class="weather-app" >
     <header>
-        <form>
-            <input type="search" placeholder="Enter a city" id="search-input" />
-            <input type="submit" name="Search" >
+        <form  class="search-form">
+            <input type="search" placeholder="Enter a city" class="search-input" />
+            <input type="submit" name="Search" class="search-form-button" >
         </form>
     </header>
     <main>
+        <div class="weather-app-data">
         <div>
-            Paris
+            <h1 class="weather-app-city">          Paris
         </h1>
-        <p>
+        <p class="weather-app-description">
             Tuesday, 14:00,cloudy with a chance of meatballs<br />
             humidity: 50%<br />
             wind: 10 km/h<br />
         </p>
         </div>
-        <h1>
-        <div>
+        <div class="weather-app-temperature">
             20°C
+        </div>
         </div>
     </main>
 
