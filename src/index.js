@@ -1,6 +1,8 @@
 function handleSearch(event) {
     event.preventDefault();
     let searchInput = document.querySelector('#search-input');
+    let cityElement = document.querySelector('.weather-app-city');
+    cityElement.innerHTML=searchInput.ariaValueMax;
   
 }
 
