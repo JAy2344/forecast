@@ -5,6 +5,10 @@ function updateWeather(response) {
     temperatureElement.innerHTML = `${temperature}`;
     let cityElement = document.querySelector('.weather-app-city');
     cityElement.innerHTML=response.data.city;
+
+    let descriptionElement = document.querySelector('#description');
+    descriptionElement.innerHTML = response.data.condition.description;
+    console.log(response);
 }
 function updateInfo(response) {
     //update the weather app with the response data
@@ -47,3 +51,9 @@ function handleSearch(event) {
 
 let searchFormElement = document.querySelector('#search-form');
 searchFormElement.addEventListener("submit",handleSearch);
+
+
+
+  let formattedDay = days[day];
+  return `${formattedDay} ${hours}:${minutes}`;
+}*/
