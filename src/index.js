@@ -1,5 +1,28 @@
 function updateWeather(response) {
-console.log(response.data);
+    //update the weather app with the response data
+    let temperature=Math.round(response.data.temperature.current);
+    let temperatureElement = document.querySelector('.weather-app-temperature');
+    temperatureElement.innerHTML = `${temperature}`;
+    let cityElement = document.querySelector('.weather-app-city');
+    cityElement.innerHTML=response.data.city;
+}
+function updateInfo(response) {
+    //update the weather app with the response data
+   let description= response.data.condition.description;
+   let descriptionElement=document.querySelector('#description');
+   descriptionElement.innerHTML=description;
+
+   let humidity=response.data.temperature.humidity;
+    let humidityElement=document.querySelector('#hum');
+    humidityElement.innerHTML=`Humidity: ${humidity}%`;
+
+    console.log(humidityElement)
+
+   let wind=response.data.wind.speed;
+   let windElement=document.querySelector('#wind');
+    windElement.innerHTML=`Wind: ${wind}km/h`;
+
+
 }
 
 
@@ -14,8 +37,7 @@ axios.get(apiUrl).then(updateWeather);
 function handleSearch(event) {
     event.preventDefault();
     let searchInput = document.querySelector('#search-input');
-    let cityElement = document.querySelector('.weather-app-city');
-    cityElement.innerHTML=searchInput.value;
+    
     searchCity(searchInput.value);
 
   //Search For city
