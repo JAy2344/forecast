@@ -19,23 +19,32 @@
     </header>
     <main>
         <div class="weather-app-data">
-        <div>
             <h1 class="weather-app-city">
                 Paris
              </h1>
         <p class="weather-app-description">
-            Tuesday, 14:00,cloudy with a chance of meatballs<br />
-            humidity: 50%<br />
-            wind: 10 km/h<br />
+            <span id="time">Tuesday, 14:00,</span>
+            <span id="description">cloudy with a chance of meatballs</span>
+                <br/>
+                <span id="hum">Humidity</span>
+           <strong id="humidity">50%</strong>
+
+           <span id="win">,Wind:</span>
+              <strong id="wind">10 km/h</strong>
         </p>
         </div>
-        <div class="weather-app-temperature">
-            20°C
+        <div class="weather-app-container">
+            <div id="icon">
+                <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" class="weather-app-icon">
+            </div>
+        
+        <div class="weather-app-temperature" id="temperature">
+            20
         </div>
+        <div class="weather-app-unit">°C</div>
         </div>
+   
     </main>
-
-
     <footer>
          <p>
           This project was coded by
@@ -45,6 +54,7 @@
         </p>
     </footer>
     </div>
+     
     <script src="src/index.js"></script>
 </body>
 </html>
