@@ -112,7 +112,7 @@ strong.weather-app-data{
   display: flex;
 }
 
-#icon {
+#icon,weather-app-icon {
   width: 88px;
   height: 88px;
 }
