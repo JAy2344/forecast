@@ -65,6 +65,6 @@ function handleSearch(event) {
 
 }
 
-  let searchFormElement = document.querySelector('#search-form');
+let searchFormElement = document.querySelector('#search-form');
 searchFormElement.addEventListener("submit",handleSearch);
 searchCity("Sydney");
