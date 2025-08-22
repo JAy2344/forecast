@@ -4,8 +4,10 @@ function updateWeather(response) {
     let temperatureElement = document.querySelector('.weather-app-temperature');
     let descriptionElement = document.querySelector('#description');
     let cityElement = document.querySelector('.weather-app-city');
-    let humidityElement=document.querySelector('#humidity');
-    let windElement=document.querySelector('#wind');
+     let humidity = response.data.temperature.humidity; // ✅ humidity from API
+     let wind = Math.round(response.data.wind.speed)
+    //let humidityElement=document.querySelector('#humidity');
+    //let windElement=document.querySelector('#wind');
     let timeElement = document.querySelector("#time");
     let date = new Date(response.data.time * 1000);
     let iconElement = document.querySelector("#icon");
