@@ -2,40 +2,57 @@ function updateWeather(response) {
     //update the weather app with the response data
     let temperature=Math.round(response.data.temperature.current);
     let temperatureElement = document.querySelector('.weather-app-temperature');
-    temperatureElement.innerHTML = `${temperature}`;
-    let cityElement = document.querySelector('.weather-app-city');
-    cityElement.innerHTML=response.data.city;
-
     let descriptionElement = document.querySelector('#description');
+    let cityElement = document.querySelector('.weather-app-city');
+    let humidityElement=document.querySelector('#humidity');
+    let windElement=document.querySelector('#wind');
+    let timeElement = document.querySelector("#time");
+    let date = new Date(response.data.time * 1000);
+    let iconElement = document.querySelector("#icon");
+
+    timeElement.innerHTML = formatDate(date);
+    temperatureElement.innerHTML = (Math.round(temperature));
+    cityElement.innerHTML=response.data.city;
     descriptionElement.innerHTML = response.data.condition.description;
-    console.log(response);
-}
-function updateInfo(response) {
-    //update the weather app with the response data
-   let description= response.data.condition.description;
-   let descriptionElement=document.querySelector('#description');
-   descriptionElement.innerHTML=description;
-
-   let humidity=response.data.temperature.humidity;
-    let humidityElement=document.querySelector('#hum');
-    humidityElement.innerHTML=`Humidity: ${humidity}%`;
-
-    console.log(humidityElement)
-
-   let wind=response.data.wind.speed;
-   let windElement=document.querySelector('#wind');
-    windElement.innerHTML=`Wind: ${wind}km/h`;
+    humidityElement.innerHTML=`${humidity}%`;
+    windElement.innerHTML=`${wind}km/h`;
+    iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 
 
 }
 
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let day = date.getDay();
 
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let formattedDay = days[day];
+  return `${formattedDay} ${hours}:${minutes}`;
+}
 
 function searchCity(city) {
       //call API
-    let apiKey = "ad28f3a0557d8t5f574o89b184356e5a"
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-axios.get(apiUrl).then(updateWeather);
+      let apiKey = "ad28f3a0557d8t5f574o89b184356e5a"
+      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(updateWeather);
 }
 
 function handleSearch(event) {
@@ -45,15 +62,9 @@ function handleSearch(event) {
     searchCity(searchInput.value);
 
   //Search For city
+
 }
 
-
-
-let searchFormElement = document.querySelector('#search-form');
+  let searchFormElement = document.querySelector('#search-form');
 searchFormElement.addEventListener("submit",handleSearch);
-
-
-
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
-}*/
+searchCity("Sydney");
