@@ -26,16 +26,6 @@ getForecast(response.data.city);
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
   let days = [
     "Sunday",
     "Monday",
@@ -46,8 +36,15 @@ function formatDate(date) {
     "Saturday",
   ];
 
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  let day = days[date.getDay()];
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
@@ -92,7 +89,7 @@ function displayForecast(response){
     forecastHTML=forecastHTML+`
 
             <div class="weather-forecast-day">
-            <div class="weather-forecast-date">${formatDate(day,index)}</div>
+            <div class="weather-forecast-date">${formatDate(day.time)}</div>
             <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
             <div class="weather-forecast-temperatures">
               <div class="weather-forecast-temperature">
