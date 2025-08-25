@@ -109,4 +109,4 @@ searchFormElement.addEventListener("submit",handleSearch);
 
 searchCity("Sydney");
 
-displayForecast();
+
