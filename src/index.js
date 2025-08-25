@@ -20,7 +20,7 @@ function updateWeather(response) {
     windElement.innerHTML=`${response.data.wind.speed}km/h`;
     iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 
-
+getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -61,8 +61,10 @@ function getForecast(city){
   let apiKey = "ad28f3a0557d8t5f574o89b184356e5a";
   let apiUrl=`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 
-  console.log(apiUrl);
+axios.get(apiUrl).then(displayForecast);
 
+}
+function displayForecast(response){
 }
 
 function handleSearch(event) {
@@ -103,4 +105,3 @@ searchFormElement.addEventListener("submit",handleSearch);
 searchCity("Sydney");
 
 displayForecast();
-getForecast("Sydney");
