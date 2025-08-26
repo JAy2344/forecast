@@ -1,26 +1,24 @@
 function updateWeather(response) {
-    //update the weather app with the response data
-    let temperature=Math.round(response.data.temperature.current);
-    let temperatureElement = document.querySelector('.weather-app-temperature');
-    let descriptionElement = document.querySelector('#description');
-    let cityElement = document.querySelector('.weather-app-city');
-     //let humidity = response.data.temperature.humidity; // ✅ humidity from API
-     //let wind = Math.round(response.data.wind.speed)
-    let humidityElement=document.querySelector('#humidity');
-    let windElement=document.querySelector('#wind');
-    let timeElement = document.querySelector("#time");
-    let date = new Date(response.data.time * 1000);
-        let iconElement = document.querySelector("#icon");
+  // Update the weather app with the response data
+  let temperature = Math.round(response.data.temperature.current);
+  let temperatureElement = document.querySelector(".weather-app-temperature");
+  let descriptionElement = document.querySelector("#description");
+  let cityElement = document.querySelector(".weather-app-city");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
-    timeElement.innerHTML = formatDate(date);
-    temperatureElement.innerHTML = (Math.round(temperature));
-    cityElement.innerHTML=response.data.city;
-    descriptionElement.innerHTML = response.data.condition.description;
-    humidityElement.innerHTML=`${response.data.temperature.humidity}%`;
-    windElement.innerHTML=`${response.data.wind.speed}km/h`;
-    iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+  cityElement.innerHTML = response.data.city;
+  timeElement.innerHTML = formatDateTime(date);
+  temperatureElement.innerHTML = temperature;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed} km/h`;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 
-getForecast(response.data.city);
+  getForecast(response.data.city);
 }
 
 // ✅ format for current time (full day + hh:mm)
