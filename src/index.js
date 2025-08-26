@@ -23,7 +23,7 @@ function updateWeather(response) {
 getForecast(response.data.city);
 }
 
-function formatDate(date) {
+function formatDateTime(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   let days = [
@@ -91,10 +91,7 @@ function displayForecast(response){
             <div class="weather-forecast-day">
             <div class="weather-forecast-date">${formatDate(day.time)}</div>
             <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
-            <div class="weather-forecast-temperatures">
-              <div class="weather-forecast-temperature">
-                <strong>${Math.round(day.temperature.maximun)}º</strong></div>
-              <div class="weather-forecast-temperature">${Math.round(day.temperature.minmum)}º</div>
+        forecastHTML +
             </div>
           </div>`;
         
